@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demystifying AI - A Friendly Guide</title>
+    <!-- Custom Generated Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Explicit Font Import for Courier New / Prime (Guarantees rendering across all Linux/Mac/Win environments) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+<div class="page-container">
+    <!-- Sticky Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-title">Contents</div>
+        <ul class="toc-list">
+            <li><a href="#intro" class="toc-link">1. Welcome to AI</a></li>
+            <li><a href="#sandbox" class="toc-link">2. Token Sandbox</a></li>
+            <li><a href="#myth" class="toc-link">3. Myth vs. Reality</a></li>
+            <li><a href="#models" class="toc-link">4. SOTA vs Local Models</a></li>
+            <li><a href="#projects" class="toc-link">5. Practical Projects</a></li>
+            <li><a href="#literacy" class="toc-link">6. Master AI Skills</a></li>
+            <li><a href="#computer-basics" class="toc-link">7. Computer Basics</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Section 1 -->
+        <section id="intro">
+            <h1>Demystifying AI</h1>
+            <div class="hero-banner">
+                A friendly, plain-English look at what Artificial Intelligence actually is. It isn't just one thing, and it certainly isn't a thinking, conscious mind.
+            </div>
+            <p class="blunt-text">
+                When most people hear "AI" today, they immediately think of chatbots like ChatGPT. But AI has been running underneath your daily life for a decade. It’s the recommendation engine deciding what Netflix shows you should watch. It’s the rapid fraud detection algorithm parsing a sketchy credit card charge instantly. It’s Google Maps calculating the fastest route home by analyzing millions of traffic data points simultaneously.
+            </p>
+            <p class="blunt-text">
+                At its core, AI is essentially <strong>very fast math</strong>. It's software built to find patterns in massive amounts of data. Whether it's finding patterns in traffic flow, patterns in human shopping behavior, or patterns in words—there is no magic, just statistical algorithms making extremely fast, educated predictions.
+            </p>
+        </section>
+
+        <!-- Section 2: Sandbox -->
+        <section id="sandbox">
+            <h2 class="highlight-yellow">Zooming In: The 3D Tokenizer</h2>
+            <p class="blunt-text">Let's look at one specific, highly-popular type of AI right now: Large Language Models (like Claude or ChatGPT). Let's peel back the curtain. Type a sentence below and watch how the computer translates your human words into a mathematical multi-dimensional space. To a machine, our language is just an array of vectors floating in 3D space.</p>
+            
+            <div class="sandbox-container">
+                <textarea id="sandbox-input" placeholder="Type a friendly sentence here... for example: Hello, this is my first time exploring AI." rows="2"></textarea>
+                <div class="canvas-wrapper" id="canvas-wrapper">
+                    <!-- ThreeJS Canvas attaches here -->
+                    <div id="labels-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Myth vs Reality Table -->
+        <section id="myth">
+            <h2 class="highlight-pink">Myth vs. Reality Table</h2>
+            <p class="blunt-text" style="margin-bottom: 1.5rem;">There's a lot of noise about what language AIs are. Here is the simple truth.</p>
+            <table class="brutalist-table">
+                <thead>
+                    <tr>
+                        <th class="myth-col">The Pop-Culture Myth</th>
+                        <th class="reality-col">The Mathematical Reality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="myth-col">"A digital brain capable of reasoning like a human."</td>
+                        <td class="reality-col">"A statistical algorithm guessing the next likely sequence of text."</td>
+                    </tr>
+                    <tr>
+                        <td class="myth-col">"The AI actually knows facts and remembers the past."</td>
+                        <td class="reality-col">"The AI sometimes hallucinates outputs that just *sound* like facts it has previously processed."</td>
+                    </tr>
+                    <tr>
+                        <td class="myth-col">"It learns from me continuously while we chat."</td>
+                        <td class="reality-col">"It temporarily stores your prompt as context only for the duration of the current session."</td>
+                    </tr>
+                    <tr>
+                        <td class="myth-col">"It carefully read the entire document I uploaded."</td>
+                        <td class="reality-col">"It chopped the document into numbers and searched for mathematical similarities to your prompt."</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 3.5: Available Models overview -->
+        <section id="models">
+            <h2 class="highlight-green">The Landscape: SOTA vs Local Models</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Not all AI is built the same. There are two primary camps in the modern AI ecosystem: massive corporate models powering the internet, and smaller local models running privately on your computer.</p>
+            
+            <table class="brutalist-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">State of The Art (SOTA) Models</th>
+                        <th style="width: 50%;">Local / Open-Weights Models</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top;">
+                            <strong>What they are:</strong> Massive, highly-expensive AI systems hosted on corporate cloud servers. They process millions of parameters and natively understand code, math, and logic flawlessly.<br><br>
+                            <strong>Examples:</strong> GPT-4o (OpenAI), Claude 3.5 (Anthropic), Gemini 1.5 Pro (Google).<br><br>
+                            <strong>Best for:</strong> Heavy logic lifting, writing code, and complex business problem solving.
+                        </td>
+                        <td style="vertical-align: top;">
+                            <strong>What they are:</strong> Smaller, extremely efficient AI systems designed to be downloaded completely onto your physical computer's hard drive. They require absolutely zero internet connection, guaranteeing your privacy.<br><br>
+                            <strong>Examples:</strong> Llama 3 (Meta), Mistral, Gemma (Google).<br><br>
+                            <strong>Best for:</strong> Absolute privacy, offline auditing, and fast local automation using tools like LMStudio or Ollama.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p class="blunt-text" style="margin-top: 2rem; border-top: 3px solid #000; padding-top: 2rem;">
+                <strong>Want to explore the model landscape?</strong> Check out <a href="https://huggingface.co/" target="_blank">Hugging Face</a>, the "GitHub of Machine Learning," where millions of open-source models are hosted for developers to explore globally.
+            </p>
+        </section>
+
+        <!-- Section 4: Expanded Practical Projects -->
+        <section id="projects">
+            <h2 class="highlight-green">Deep-Dive Practical Projects</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">The best way to learn is by doing. Here are four grounded, beginner-friendly projects that use any modern AI platform to build real institutional knowledge.</p>
+            
+            <div class="dense-grid">
+                <!-- Project 1 -->
+                <div class="card recipe-card">
+                    <div class="recipe-header">1 | Accelerated Drafting</div>
+                    <div class="recipe-objective"><strong>Goal:</strong> Instantly generate a baseline email or business analysis report.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Facing a blank page is the hardest part of writing. Use an AI to construct an initial framework, letting you step into the role of an editor rather than an author. This saves hours of writing heavy boilerplate.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Paste the prompt below into your preferred AI platform.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
+                        Act as a senior business analyst. I am providing you with my raw bullet points regarding Q3 metrics. Draft a formal, 4-paragraph business report targeted at executive stakeholders. Ensure the tone is objective and highlights risks clearly.
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card recipe-card">
+                    <div class="recipe-header">2 | Deep Summarization</div>
+                    <div class="recipe-objective"><strong>Goal:</strong> Distill a massive textbook, industry report, or document into actionable insights.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">AIs are exceptional at parsing massive contexts instantly. By feeding a complex document directly into an engine, you can bypass academic jargon and extract the exact information you actually need.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Upload a PDF to any multi-modal AI platform and use this constraint.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
+                        Analyze this attached industry report. I do not have time to read 50 pages. Summarize the thesis in 3 sentences, extract the 5 most critical statistics, and list 3 actionable takeaways for our marketing team.
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card recipe-card">
+                    <div class="recipe-header">3 | The Formatter</div>
+                    <div class="recipe-objective"><strong>Goal:</strong> Automate tedious data cleanup so you don't have to restructure spreadsheets manually.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Language models are notoriously bad at recalling factual truth, but they excel at transforming structural data. By strictly limiting it to formatting, you leverage its best technical capabilities safely.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Paste this prompt alongside messy meeting notes or scattered thoughts into your tool of choice.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
+                        Act as a strict editor. Do NOT generate new ideas or rewrite my intent. Format these unorganized notes into a clean, 3-column markdown table separating: Main Topic | Action Item | Assigned To.
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="card recipe-card">
+                    <div class="recipe-header">4 | Vibe-Coding</div>
+                    <div class="recipe-objective"><strong>Goal:</strong> Generate a custom web app (like a habit tracker) entirely from scratch.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">You don't need a computer science degree to build personal utility apps anymore. Conversational generation lets you build mini-apps on the fly, immediately demystifying software ownership.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Use a model with web-preview capabilities (like Claude Artifacts) and specify exactly what you need.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
+                        I have no coding experience. Please generate the complete, single-file HTML and CSS for a simple, colorful habit tracker web app that lets me check off tasks. Make the buttons large and friendly.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: AI Literacy Exhaustive Resources -->
+        <section id="literacy">
+            <h2 class="highlight-yellow" style="background-color: #000; color: #fff;">Master AI Skills: Free Resources</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">If you want to dive deeper, we have compiled an exhaustive list of the industry's highest-rated, free courses designed explicitly for complete beginners.</p>
+
+            <table class="brutalist-table resource-table">
+                <thead>
+                    <tr>
+                        <th>Resource / Course Name</th>
+                        <th>Provider</th>
+                        <th>Best For...</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>AI for Everyone</strong></td>
+                        <td>DeepLearning.AI / Coursera</td>
+                        <td>The global gold standard for understanding AI concepts and strategy without math.</td>
+                        <td><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google AI Essentials</strong></td>
+                        <td>Google (via Grow with Google)</td>
+                        <td>Practical, work-ready skills. Learn how to prompt effectively and use AI in daily tasks.</td>
+                        <td><a href="https://grow.google/ai/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Make America AI-Ready</strong></td>
+                        <td>U.S. Department of Labor</td>
+                        <td>Zero-barrier entry. Get 10-minute AI lessons texted directly to your phone.</td>
+                        <td><a href="https://www.dol.gov/agencies/eta/ai-literacy" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Elements of AI</strong></td>
+                        <td>University of Helsinki</td>
+                        <td>Academic foundation-building on how AI impacts society and business ethics globally.</td>
+                        <td><a href="https://www.elementsofai.com/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>IBM AI Foundations</strong></td>
+                        <td>IBM via Coursera</td>
+                        <td>Understanding generative AI safety, bias, and responsible use in the corporate world.</td>
+                        <td><a href="https://www.coursera.org/specializations/ibm-ai-foundations-for-everyone" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Neural Networks Series</strong></td>
+                        <td>3Blue1Brown (YouTube)</td>
+                        <td>The gold-standard visual & mathematical explanation of how AI actually learns over time.</td>
+                        <td><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank">Watch Videos</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>"HUGE If True" Tech Series</strong></td>
+                        <td>Cleo Abram (YouTube)</td>
+                        <td>Optimistic, fast-paced journalism breaking down massive AI tech for the general public.</td>
+                        <td><a href="https://www.youtube.com/@CleoAbram" target="_blank">View Channel</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Waveform Podcast: AI Explored</strong></td>
+                        <td>MKBHD (YouTube)</td>
+                        <td>Highly practical consumer-tech discussions on the reality of implementing AI in daily tools.</td>
+                        <td><a href="https://www.youtube.com/results?search_query=mkbhd+waveform+ai+explained" target="_blank">Listen</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 6: Computer Basics Exhaustive Resources -->
+        <section id="computer-basics">
+            <h2 class="highlight-pink">Computer Basics: Free Resources</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Before mastering AI, a solid computer foundation makes everything easier. Here is an exhaustive directory of free, gentle, self-paced courses mapping from mouse basics to safe web browsing.</p>
+
+            <table class="brutalist-table resource-table">
+                <thead>
+                    <tr>
+                        <th>Resource / Course Name</th>
+                        <th>Provider</th>
+                        <th>Best For...</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GCFGlobal Tutorials</strong></td>
+                        <td>GCF LearnFree</td>
+                        <td>The absolute best place to start. Covers everything from holding a mouse to typing and email.</td>
+                        <td><a href="https://edu.gcfglobal.org/en/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DigitalLearn.org</strong></td>
+                        <td>Public Library Association</td>
+                        <td>Straightforward, beginner-friendly computer navigation built for absolute newcomers.</td>
+                        <td><a href="https://digitallearn.org" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Northstar Digital Literacy</strong></td>
+                        <td>Literacy Minnesota</td>
+                        <td>Starts with a free assessment to test what you know, so you don't repeat the basics.</td>
+                        <td><a href="https://www.digitalliteracyassessment.org/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Learn My Way</strong></td>
+                        <td>Good Things Foundation</td>
+                        <td>Free online courses helping you develop essential skills to use the internet safely.</td>
+                        <td><a href="https://www.learnmyway.com/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Senior Planet Tech Guides</strong></td>
+                        <td>AARP</td>
+                        <td>Excellent, highly accessible guides tailored specifically for older adults and seniors.</td>
+                        <td><a href="https://seniorplanet.org/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer Basics Series</strong></td>
+                        <td>Kaceli TechTraining (YouTube)</td>
+                        <td>Visual learners. A comprehensive multi-hour video course covering Windows, Mac, and Office.</td>
+                        <td><a href="https://www.youtube.com/@KaceliTechTraining" target="_blank">Start Learning</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+</div>
+
+</body>
+</html>
