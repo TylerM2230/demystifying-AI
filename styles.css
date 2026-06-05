@@ -378,10 +378,33 @@ a:hover {
     padding: 1rem 1.5rem;
 }
 
+/* Hover fixes for touch devices */
+@media (hover: none) {
+    .card:hover {
+        transform: none;
+        box-shadow: 8px 8px 0px #000;
+    }
+    .recipe-prompt:hover {
+        transform: none;
+        box-shadow: none;
+        border: 2px solid transparent;
+    }
+    .toc-link:hover {
+        transform: none;
+        background-color: transparent;
+        box-shadow: none;
+        border: 2px solid transparent;
+    }
+}
+
 /* Mobile Adjustments */
 @media (max-width: 1000px) {
+    body, html {
+        overflow-x: hidden;
+    }
     .page-container {
         flex-direction: column;
+        overflow-x: hidden;
     }
     .sidebar {
         width: 100%;
@@ -418,7 +441,7 @@ a:hover {
         font-size: 0.95rem;
     }
     .main-content {
-        padding: 1.5rem;
+        padding: 1rem; /* Tighter sidewall padding */
         padding-top: 5.5rem;
         width: 100%;
     }
@@ -428,6 +451,14 @@ a:hover {
     }
     .recipe-grid, .dense-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem; /* Reduce gap */
+    }
+    .card {
+        padding: 1.25rem; /* Reduce card padding */
+        max-width: calc(100vw - 2rem - 8px); /* Avoid overflow from shadow */
+    }
+    .recipe-prompt {
+        padding: 1rem;
     }
     .brutalist-table th, .brutalist-table td {
         display: block;
