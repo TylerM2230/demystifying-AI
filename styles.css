@@ -451,14 +451,28 @@ a:hover {
     }
     .recipe-grid, .dense-grid {
         grid-template-columns: 1fr;
-        gap: 1.25rem; /* Reduce gap */
+        gap: 1.25rem;
+        max-width: 100%;
     }
     .card {
-        padding: 1.25rem; /* Reduce card padding */
-        max-width: calc(100vw - 2rem - 8px); /* Avoid overflow from shadow */
+        padding: 1.25rem;
+        max-width: 100%;
+        margin-right: 4px;
+        box-shadow: 4px 4px 0px #000;
+        word-wrap: break-word;
+    }
+    .recipe-header {
+        font-size: 1.1rem;
+        white-space: normal;
+        word-wrap: break-word;
+        max-width: 100%;
+        margin-bottom: 0.75rem;
     }
     .recipe-prompt {
-        padding: 1rem;
+        padding: 0.85rem;
+        font-size: 0.85rem;
+        word-break: break-word;
+        max-width: 100%;
     }
     .brutalist-table th, .brutalist-table td {
         display: block;
