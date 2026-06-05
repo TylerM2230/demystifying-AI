@@ -353,68 +353,6 @@ section {
     margin-top: auto;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 1000px) {
-    .page-container {
-        flex-direction: column;
-    }
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        border-right: none;
-        border-bottom: 4px solid #000;
-        padding: 1rem 2rem;
-        z-index: 100;
-        background-color: #fceceb;
-    }
-    .sidebar-title {
-        display: none;
-    }
-    .toc-list {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem;
-        padding-bottom: 0.5rem;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .toc-list::-webkit-scrollbar {
-        display: none;
-    }
-    .toc-link {
-        white-space: nowrap;
-        margin-bottom: 0;
-        padding: 0.5rem 1rem;
-    }
-    .main-content {
-        padding: 2rem;
-    }
-    .recipe-grid {
-        grid-template-columns: 1fr;
-    }
-    .brutalist-table th, .brutalist-table td {
-        display: block;
-        width: 100%;
-    }
-    .brutalist-table th { display: none; }
-    .myth-col::before {
-        content: "MYTH: ";
-        font-weight: bold;
-        text-decoration: underline;
-    }
-    .reality-col::before {
-        content: "REALITY: ";
-        font-weight: bold;
-        text-decoration: underline;
-    }
-    .brutalist-table tr {
-        display: block;
-        border-bottom: 4px solid #000;
-    }
-}
-
 /* Dense Grid */
 .dense-grid {
     display: grid;
@@ -438,4 +376,92 @@ a:hover {
 
 .resource-table th, .resource-table td {
     padding: 1rem 1.5rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1000px) {
+    .page-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-right: none;
+        border-bottom: 3px solid #000;
+        padding: 0.75rem 1rem;
+        z-index: 1000;
+        background-color: #fceceb;
+    }
+    .sidebar-title {
+        display: none;
+    }
+    .toc-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.75rem;
+        padding-bottom: 0.5rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        align-items: center;
+    }
+    .toc-list::-webkit-scrollbar {
+        display: none;
+    }
+    .toc-link {
+        white-space: nowrap;
+        margin-bottom: 0;
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+    }
+    .main-content {
+        padding: 1.5rem;
+        padding-top: 5.5rem;
+        width: 100%;
+    }
+    section {
+        scroll-margin-top: 5.5rem;
+        margin-bottom: 4rem;
+    }
+    .recipe-grid, .dense-grid {
+        grid-template-columns: 1fr;
+    }
+    .brutalist-table th, .brutalist-table td {
+        display: block;
+        width: 100%;
+    }
+    .brutalist-table th { display: none; }
+    .myth-col::before {
+        content: "MYTH: ";
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .reality-col::before {
+        content: "REALITY: ";
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .brutalist-table tr {
+        display: block;
+        border-bottom: 4px solid #000;
+    }
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .hero-banner {
+        font-size: 1.15rem;
+        padding: 1.5rem;
+    }
+    .canvas-wrapper {
+        height: 300px;
+    }
 }
