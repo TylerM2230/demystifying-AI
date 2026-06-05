@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
     <!-- Three.js CDN -->
@@ -23,6 +24,12 @@
 <div class="page-container">
     <!-- Sticky Sidebar -->
     <nav class="sidebar">
+        <div class="sidebar-controls">
+            <a href="index-tl.html" class="lang-switcher">🇵🇭 Tagalog</a>
+            <button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
         <div class="sidebar-title">Contents</div>
         <ul class="toc-list">
             <li><a href="#intro" class="toc-link">1. Welcome to AI</a></li>
@@ -30,8 +37,9 @@
             <li><a href="#myth" class="toc-link">3. Myth vs. Reality</a></li>
             <li><a href="#models" class="toc-link">4. SOTA vs Local Models</a></li>
             <li><a href="#projects" class="toc-link">5. Practical Projects</a></li>
-            <li><a href="#literacy" class="toc-link">6. Master AI Skills</a></li>
-            <li><a href="#computer-basics" class="toc-link">7. Computer Basics</a></li>
+            <li><a href="#job-skills" class="toc-link">6. Applicable Job Skills</a></li>
+            <li><a href="#literacy" class="toc-link">7. Master AI Skills</a></li>
+            <li><a href="#computer-basics" class="toc-link">8. Computer Basics</a></li>
         </ul>
     </nav>
 
@@ -113,7 +121,7 @@
                 <tbody>
                     <tr>
                         <td style="vertical-align: top;">
-                            <strong>What they are:</strong> Massive, highly-expensive AI systems hosted on corporate cloud servers. They process millions of parameters and natively understand code, math, and logic flawlessly.<br><br>
+                            <strong>What they are:</strong> Massive, highly-expensive AI systems hosted on corporate cloud servers. They process billions or trillions of parameters and can write code, analyze data, and solve complex logic problems with high proficiency (though they still make mistakes).<br><br>
                             <strong>Examples:</strong> GPT-4o (OpenAI), Claude 3.5 (Anthropic), Gemini 1.5 Pro (Google).<br><br>
                             <strong>Best for:</strong> Heavy logic lifting, writing code, and complex business problem solving.
                         </td>
@@ -138,8 +146,8 @@
             
             <div class="dense-grid">
                 <!-- Project 1 -->
-                <div class="card recipe-card">
-                    <div class="recipe-header">1 | Accelerated Drafting</div>
+                <details class="card recipe-card">
+                    <summary class="recipe-header">1 | Accelerated Drafting</summary>
                     <div class="recipe-objective"><strong>Goal:</strong> Instantly generate a baseline email or business analysis report.</div>
                     <div class="recipe-label">The "Why":</div>
                     <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Facing a blank page is the hardest part of writing. Use an AI to construct an initial framework, letting you step into the role of an editor rather than an author. This saves hours of writing heavy boilerplate.</div>
@@ -148,11 +156,11 @@
                     <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
                         Act as a senior business analyst. I am providing you with my raw bullet points regarding Q3 metrics. Draft a formal, 4-paragraph business report targeted at executive stakeholders. Ensure the tone is objective and highlights risks clearly.
                     </div>
-                </div>
+                </details>
 
                 <!-- Project 2 -->
-                <div class="card recipe-card">
-                    <div class="recipe-header">2 | Deep Summarization</div>
+                <details class="card recipe-card">
+                    <summary class="recipe-header">2 | Deep Summarization</summary>
                     <div class="recipe-objective"><strong>Goal:</strong> Distill a massive textbook, industry report, or document into actionable insights.</div>
                     <div class="recipe-label">The "Why":</div>
                     <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">AIs are exceptional at parsing massive contexts instantly. By feeding a complex document directly into an engine, you can bypass academic jargon and extract the exact information you actually need.</div>
@@ -161,11 +169,11 @@
                     <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
                         Analyze this attached industry report. I do not have time to read 50 pages. Summarize the thesis in 3 sentences, extract the 5 most critical statistics, and list 3 actionable takeaways for our marketing team.
                     </div>
-                </div>
+                </details>
 
                 <!-- Project 3 -->
-                <div class="card recipe-card">
-                    <div class="recipe-header">3 | The Formatter</div>
+                <details class="card recipe-card">
+                    <summary class="recipe-header">3 | The Formatter</summary>
                     <div class="recipe-objective"><strong>Goal:</strong> Automate tedious data cleanup so you don't have to restructure spreadsheets manually.</div>
                     <div class="recipe-label">The "Why":</div>
                     <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Language models are notoriously bad at recalling factual truth, but they excel at transforming structural data. By strictly limiting it to formatting, you leverage its best technical capabilities safely.</div>
@@ -174,11 +182,11 @@
                     <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
                         Act as a strict editor. Do NOT generate new ideas or rewrite my intent. Format these unorganized notes into a clean, 3-column markdown table separating: Main Topic | Action Item | Assigned To.
                     </div>
-                </div>
+                </details>
 
                 <!-- Project 4 -->
-                <div class="card recipe-card">
-                    <div class="recipe-header">4 | Vibe-Coding</div>
+                <details class="card recipe-card">
+                    <summary class="recipe-header">4 | Vibe-Coding</summary>
                     <div class="recipe-objective"><strong>Goal:</strong> Generate a custom web app (like a habit tracker) entirely from scratch.</div>
                     <div class="recipe-label">The "Why":</div>
                     <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">You don't need a computer science degree to build personal utility apps anymore. Conversational generation lets you build mini-apps on the fly, immediately demystifying software ownership.</div>
@@ -187,11 +195,45 @@
                     <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
                         I have no coding experience. Please generate the complete, single-file HTML and CSS for a simple, colorful habit tracker web app that lets me check off tasks. Make the buttons large and friendly.
                     </div>
-                </div>
+                </details>
             </div>
         </section>
 
-        <!-- Section 5: AI Literacy Exhaustive Resources -->
+        <!-- Section 5: Job Skills -->
+        <section id="job-skills">
+            <h2 class="highlight-purple">Applying AI: The Job Search</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Employers today want professionals who can use AI as a tool to solve real business problems. The secret to surviving the AI economy isn't knowing how to code—it's mastering the "Human-First Workflow." Here is how to apply that to your career.</p>
+
+            <div class="dense-grid">
+                <!-- Skill 1 -->
+                <details class="card recipe-card">
+                    <summary class="recipe-header">1 | The Resume Editor</summary>
+                    <div class="recipe-objective"><strong>Goal:</strong> Optimize your resume for Applicant Tracking Systems (ATS) without sounding like a robot.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Never ask AI to generate your resume from scratch—recruiters can spot generic buzzwords instantly. Instead, write your honest experience first, then use AI strictly to polish formatting and match keywords from the job description.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Paste this prompt along with the Job Description and your draft bullet points:</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
+                        I am applying for a [Job Title] role. Here is the job description and my current resume bullets. Analyze the top 5 critical keywords from the JD, and suggest how I can naturally weave them into my bullets to highlight measurable outcomes.
+                    </div>
+                </details>
+
+                <!-- Skill 2 -->
+                <details class="card recipe-card">
+                    <summary class="recipe-header">2 | The Mock Interviewer</summary>
+                    <div class="recipe-objective"><strong>Goal:</strong> Practice behavioral questions and receive immediate, judgment-free feedback.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">AI platforms can simulate a high-pressure interview environment. By practicing your responses out loud or in writing, you can refine your STAR (Situation, Task, Action, Result) storytelling before the real thing.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Open a conversational AI tool (like ChatGPT Voice or Claude) and use this setup constraint:</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Copied to clipboard!');">
+                        Act as the hiring manager for a [Job Title] at [Company Name]. Ask me behavioral interview questions one at a time. After I answer, provide constructive feedback on my clarity and suggest improvements based on the STAR method.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Section 6: AI Literacy Exhaustive Resources -->
         <section id="literacy">
             <h2 class="highlight-yellow" style="background-color: #000; color: #fff;">Master AI Skills: Free Resources</h2>
             <p class="blunt-text" style="margin-bottom: 2rem;">If you want to dive deeper, we have compiled an exhaustive list of the industry's highest-rated, free courses designed explicitly for complete beginners.</p>
@@ -258,7 +300,7 @@
             </table>
         </section>
 
-        <!-- Section 6: Computer Basics Exhaustive Resources -->
+        <!-- Section 7: Computer Basics Exhaustive Resources -->
         <section id="computer-basics">
             <h2 class="highlight-pink">Computer Basics: Free Resources</h2>
             <p class="blunt-text" style="margin-bottom: 2rem;">Before mastering AI, a solid computer foundation makes everything easier. Here is an exhaustive directory of free, gentle, self-paced courses mapping from mouse basics to safe web browsing.</p>

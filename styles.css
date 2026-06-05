@@ -78,6 +78,55 @@ body {
     background-color: #90ff90;
 }
 
+/* Sidebar Controls */
+.sidebar-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.dark-mode-btn {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    padding: 0.8rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+    background-color: #ff90e8;
+    color: #000;
+}
+
+.lang-switcher {
+    display: inline-block;
+    padding: 0.8rem 1rem;
+    border: 2px solid #000;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 4px 4px 0px #000;
+    transition: all 0.2s;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.lang-switcher:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+    background-color: #ff90e8;
+}
+
 /* Main Content Area */
 .main-content {
     flex: 1;
@@ -127,6 +176,7 @@ section {
 .highlight-yellow { background-color: #ffc900; padding: 0 0.4rem; }
 .highlight-green { background-color: #90ff90; padding: 0 0.4rem; }
 .highlight-pink { background-color: #ff90e8; padding: 0 0.4rem; }
+.highlight-purple { background-color: #b088ff; padding: 0 0.4rem; }
 
 .blunt-text {
     font-size: 1.2rem;
@@ -298,10 +348,14 @@ section {
     gap: 2rem;
 }
 
-.recipe-card {
+details.recipe-card {
     background-color: #fff;
     display: flex;
     flex-direction: column;
+}
+
+details.recipe-card[open] .recipe-header {
+    margin-bottom: 1.5rem;
 }
 
 .recipe-header {
@@ -309,11 +363,30 @@ section {
     font-weight: bold;
     border-bottom: 3px solid #000;
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     text-transform: uppercase;
     background-color: #ff90e8;
     display: inline-block;
     align-self: flex-start;
+    cursor: pointer;
+    list-style: none; /* Hide default arrow */
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.recipe-header::-webkit-details-marker {
+    display: none;
+}
+
+.recipe-header::before {
+    content: "[+]";
+    position: absolute;
+    left: 0.2rem;
+    font-size: 1.2rem;
+}
+
+details[open] .recipe-header::before {
+    content: "[-]";
 }
 
 .recipe-objective {
@@ -422,6 +495,14 @@ a:hover {
     .sidebar-title {
         display: none;
     }
+    .sidebar-controls {
+        margin-bottom: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .dark-mode-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 1rem;
+    }
     .toc-list {
         display: flex;
         overflow-x: auto;
@@ -434,6 +515,11 @@ a:hover {
     .toc-list::-webkit-scrollbar {
         display: none;
     }
+    .lang-switcher {
+        margin-bottom: 0;
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+    }
     .toc-link {
         white-space: nowrap;
         margin-bottom: 0;
@@ -441,12 +527,13 @@ a:hover {
         font-size: 0.95rem;
     }
     .main-content {
-        padding: 1rem; /* Tighter sidewall padding */
+        padding: 1.25rem;
         padding-top: 5.5rem;
+        padding-right: 1.5rem; /* Account for shadow */
         width: 100%;
     }
     section {
-        scroll-margin-top: 5.5rem;
+        scroll-margin-top: 6rem;
         margin-bottom: 4rem;
     }
     .recipe-grid, .dense-grid {
@@ -457,7 +544,6 @@ a:hover {
     .card {
         padding: 1.25rem;
         max-width: 100%;
-        margin-right: 4px;
         box-shadow: 4px 4px 0px #000;
         word-wrap: break-word;
     }
@@ -508,5 +594,187 @@ a:hover {
     }
     .canvas-wrapper {
         height: 300px;
+    }
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+body.dark-mode .sidebar {
+    background-color: #2a2a2a;
+    border-right-color: #f4f4f4;
+}
+
+body.dark-mode .sidebar-title {
+    border-bottom-color: #f4f4f4;
+}
+
+body.dark-mode .toc-link {
+    color: #f4f4f4;
+}
+
+body.dark-mode .toc-link:hover, body.dark-mode .toc-link.active {
+    border-color: #f4f4f4;
+    background-color: #111;
+    color: #fff;
+    box-shadow: 4px 4px 0px #f4f4f4;
+}
+
+body.dark-mode .toc-link.active {
+    background-color: #006600; /* Darker green */
+}
+
+body.dark-mode .lang-switcher {
+    border-color: #f4f4f4;
+    background-color: #111;
+    color: #f4f4f4;
+    box-shadow: 4px 4px 0px #f4f4f4;
+}
+
+body.dark-mode .lang-switcher:hover {
+    box-shadow: 6px 6px 0px #f4f4f4;
+    background-color: #ff66cc;
+    color: #000;
+}
+
+body.dark-mode h1 {
+    border-bottom-color: #f4f4f4;
+}
+
+body.dark-mode h2 {
+    border-color: #f4f4f4;
+    box-shadow: 6px 6px 0px #f4f4f4;
+}
+
+body.dark-mode .hero-banner {
+    border-color: #f4f4f4;
+    background-color: #2a2a2a;
+    box-shadow: 8px 8px 0px #f4f4f4;
+}
+
+body.dark-mode .card,
+body.dark-mode .brutalist-table {
+    border-color: #f4f4f4;
+    background-color: #2a2a2a;
+    box-shadow: 8px 8px 0px #f4f4f4;
+}
+
+body.dark-mode .sandbox-container {
+    border-color: #f4f4f4;
+    background-color: #2a2a2a;
+    box-shadow: 8px 8px 0px #f4f4f4;
+}
+
+body.dark-mode #sandbox-input {
+    border-bottom-color: #f4f4f4;
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.dark-mode #sandbox-input:focus {
+    background-color: #111;
+}
+
+body.dark-mode .canvas-wrapper {
+    border-bottom-color: #f4f4f4;
+    background-color: #222;
+}
+
+body.dark-mode .myth-col {
+    background-color: #2a2a2a;
+    color: #f4f4f4;
+}
+
+body.dark-mode .reality-col {
+    background-color: #00cc55;
+    color: #000;
+}
+
+body.dark-mode .brutalist-table th, body.dark-mode .brutalist-table td {
+    border-color: #f4f4f4;
+}
+
+body.dark-mode .brutalist-table th {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+body.dark-mode .recipe-header {
+    border-bottom-color: #f4f4f4;
+    background-color: #ff66cc;
+    color: #000;
+}
+
+body.dark-mode .recipe-prompt {
+    background-color: #f4f4f4;
+    color: #000;
+    border-color: transparent;
+}
+
+body.dark-mode .recipe-prompt:hover {
+    box-shadow: 4px 4px 0px #886600;
+    border-color: #f4f4f4;
+}
+
+body.dark-mode a {
+    color: #f4f4f4;
+}
+
+body.dark-mode .highlight-yellow {
+    background-color: #e5b800;
+    color: #000;
+}
+
+body.dark-mode .highlight-green {
+    background-color: #00cc55;
+    color: #000;
+}
+
+body.dark-mode .highlight-pink {
+    background-color: #ff66cc;
+    color: #000;
+}
+
+body.dark-mode .highlight-purple {
+    background-color: #b088ff;
+    color: #000;
+}
+
+body.dark-mode .career-card {
+    background-color: #2a2a2a;
+    border-color: #e5b800;
+}
+
+body.dark-mode .career-title {
+    border-bottom-color: #f4f4f4;
+}
+
+body.dark-mode .auditor-box {
+    border-color: #f4f4f4;
+    background-color: #111;
+}
+
+body.dark-mode .dark-mode-btn {
+    border-color: #f4f4f4;
+    background-color: #f4f4f4;
+    color: #000;
+    box-shadow: 4px 4px 0px #f4f4f4;
+}
+
+body.dark-mode .dark-mode-btn:hover {
+    background-color: #ff66cc;
+    color: #000;
+    box-shadow: 6px 6px 0px #f4f4f4;
+}
+
+@media (max-width: 1000px) {
+    body.dark-mode .sidebar {
+        border-bottom-color: #f4f4f4;
     }
 }

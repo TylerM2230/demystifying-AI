@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demystifying AI - Isang Simpleng Guide</title>
+    <!-- Custom Generated Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Explicit Font Import for Courier New / Prime (Guarantees rendering across all Linux/Mac/Win environments) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+<div class="page-container">
+    <!-- Sticky Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-title">Mga Nilalaman</div>
+        <ul class="toc-list">
+            <li><a href="index.html" class="lang-switcher">🌎 Read in English</a></li>
+            <li><a href="#intro" class="toc-link">1. Welcome sa AI</a></li>
+            <li><a href="#sandbox" class="toc-link">2. Token Sandbox</a></li>
+            <li><a href="#myth" class="toc-link">3. Myth vs. Reality</a></li>
+            <li><a href="#models" class="toc-link">4. SOTA vs Local Models</a></li>
+            <li><a href="#projects" class="toc-link">5. Practical Projects</a></li>
+            <li><a href="#literacy" class="toc-link">6. AI Masterclass</a></li>
+            <li><a href="#computer-basics" class="toc-link">7. Computer Basics</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Section 1 -->
+        <section id="intro">
+            <h1>Pag-unawa sa AI</h1>
+            <div class="hero-banner">
+                Isang madaling intindihin at simpleng explanation kung ano nga ba talaga ang Artificial Intelligence. Hindi lang ito iisang bagay, at lalong hindi ito isang tunay na nag-iisip na utak.
+            </div>
+            <p class="blunt-text">
+                Pag naririnig ng mga tao ang "AI" ngayon, naiisip agad nila ang mga chatbot tulad ng ChatGPT. Pero higit isang dekada na ring gumagana ang AI sa background ng araw-araw nating buhay. Ito yung recommendation engine na pumipili kung anong Netflix show ang susunod mong papanuorin. Ito rin yung fraud detection algorithm na mabilisang humaharang sa mga nakaka-dudang credit card charge. O kaya yung Google Maps na nagku-compute ng pinakamabilis na ruta pauwi by analyzing millions of traffic data points at the same time.
+            </p>
+            <p class="blunt-text">
+                Sa madaling salita, ang AI ay literal na <strong>napakabilis na math</strong>. Isa lang itong software na ginawa para mag-hanap ng patterns sa sobrang daming data. Pattern man yan sa daloy ng traffic, sa shopping habits ng tao, o sa mga salitang ginagamit natin—walang magic dito, puro statistical algorithms lang na mabilisang gumagawa ng abanseng mga hula.
+            </p>
+        </section>
+
+        <!-- Section 2: Sandbox -->
+        <section id="sandbox">
+            <h2 class="highlight-yellow">Zooming In: Ang 3D Tokenizer</h2>
+            <p class="blunt-text">Tingnan natin ang pinaka-sikat na klase ng AI ngayon: ang mga Large Language Models (tulad ng Claude o ChatGPT). Silipin natin yung nasa likod nito. Mag-type ng sentence sa ibaba at panoorin kung paano tina-translate ng computer yung mga salita mo into mathematical multi-dimensional space. Para sa makina, ang wika natin ay series lang ng mga vectors na naka-float sa 3D space.</p>
+            
+            <div class="sandbox-container">
+                <textarea id="sandbox-input" placeholder="Mag-type ng friendly na sentence dito... halimbawa: Hello, first time ko mag-explore ng AI." rows="2"></textarea>
+                <div class="canvas-wrapper" id="canvas-wrapper">
+                    <!-- ThreeJS Canvas attaches here -->
+                    <div id="labels-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Myth vs Reality Table -->
+        <section id="myth">
+            <h2 class="highlight-pink">Myth vs. Reality Table</h2>
+            <p class="blunt-text" style="margin-bottom: 1.5rem;">Sobrang daming fake news at misconceptions tungkol sa kung ano ba talaga ang mga language AIs. Eto yung simpleng katotohanan.</p>
+            <table class="brutalist-table">
+                <thead>
+                    <tr>
+                        <th class="myth-col">Ang Pop-Culture Myth</th>
+                        <th class="reality-col">Ang Totoong Nangyayari</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="myth-col">"Isang digital na utak na kayang mag-isip tulad ng tao."</td>
+                        <td class="reality-col">"Isang statistical algorithm na nanghuhula lang kung ano ang pinaka-logical na kasunod na salita."</td>
+                    </tr>
+                    <tr>
+                        <td class="myth-col">"Alam talaga ng AI lahat ng facts at nakaka-alala siya ng past history."</td>
+                        <td class="reality-col">"Minsan nagha-hallucinate lang ang AI ng mga sagot na *sound like* facts base sa mga nabasa na niya dati."</td>
+                    </tr>
+                    <tr>
+                        <td class="myth-col">"Tuloy-tuloy siyang natututo sa akin habang nag-uusap kami."</td>
+                        <td class="reality-col">"Tine-temporarily store lang niya yung mga prompt mo as context habang active pa yung kasalukuyang session niyo."</td>
+                    </tr>
+                    <tr>
+                        <td class="myth-col">"Maingat at buong binasa niya yung document na in-upload ko."</td>
+                        <td class="reality-col">"Hinati-hati lang niya yung document sa mga numbers and searched for mathematical similarities na match dun sa prompt mo."</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 3.5: Available Models overview -->
+        <section id="models">
+            <h2 class="highlight-green">Ang Landscape: SOTA vs Local Models</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Hindi lahat ng AI ay pare-pareho. May dalawang main camps sa modern AI ecosystem: yung mga massive corporate models na nagpapa-andar sa internet, at yung mga smaller local models na tumatakbo privately mismo sa computer mo.</p>
+            
+            <table class="brutalist-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">State of The Art (SOTA) Models</th>
+                        <th style="width: 50%;">Local / Open-Weights Models</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align: top;">
+                            <strong>Ano ang mga ito:</strong> Malalaki at super expensive na AI systems na naka-host sa corporate cloud servers. Nagpa-process sila ng millions of parameters kaya nilang maintindihan flawlessly ang code, math, and logic.<br><br>
+                            <strong>Mga Halimbawa:</strong> GPT-4o (OpenAI), Claude 3.5 (Anthropic), Gemini 1.5 Pro (Google).<br><br>
+                            <strong>Pinakamainam para sa:</strong> Mabibigat na logic tasks, code writing, and solving complex business problems.
+                        </td>
+                        <td style="vertical-align: top;">
+                            <strong>Ano ang mga ito:</strong> Mas maliliit pero sobrang efficient na AI systems designed to be downloaded completely sa mismong hard drive mo. Wala silang kailangang internet connection, kaya 100% guaranteed ang privacy mo.<br><br>
+                            <strong>Mga Halimbawa:</strong> Llama 3 (Meta), Mistral, Gemma (Google).<br><br>
+                            <strong>Pinakamainam para sa:</strong> Absolute privacy, offline editing, at fast local automation gamit ang mga tools tulad ng LMStudio o Ollama.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p class="blunt-text" style="margin-top: 2rem; border-top: 3px solid #000; padding-top: 2rem;">
+                <strong>Gusto mong i-explore ang model landscape?</strong> Check out <a href="https://huggingface.co/" target="_blank">Hugging Face</a>, ang "GitHub ng Machine Learning," kung saan millions of open-source models ang naka-host para libreng ma-explore ng mga developers globally.
+            </p>
+        </section>
+
+        <!-- Section 4: Expanded Practical Projects -->
+        <section id="projects">
+            <h2 class="highlight-green">Deep-Dive Practical Projects</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Best way to learn is by doing. Eto ang apat na grounded at beginner-friendly projects gamit ang kahit anong modern AI platform para maka-build ka ng tunay na institutional knowledge.</p>
+            
+            <div class="dense-grid">
+                <!-- Project 1 -->
+                <details class="card recipe-card">
+                    <summary class="recipe-header">1 | Accelerated Drafting</summary>
+                    <div class="recipe-objective"><strong>Goal:</strong> Agad na maka-generate ng baseline email o business analysis report.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Facing a blank page yung pinakamahirap pag nagsusulat. Use AI to construct an initial framework, tapos mag-step-in ka na lang as editor kaysa umpisahan mo from scratch. Literal na makaka-save to ng ilang oras kaysa magsulat ka ng heavy boilerplate.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">I-paste lang yung prompt sa ibaba sa kahit anong AI platform ng choice mo.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Nakopya!');">
+                        Act as a senior business analyst. I am providing you with my raw bullet points regarding Q3 metrics. Draft a formal, 4-paragraph business report targeted at executive stakeholders. Ensure the tone is objective and highlights risks clearly.
+                    </div>
+                </details>
+
+                <!-- Project 2 -->
+                <details class="card recipe-card">
+                    <summary class="recipe-header">2 | Deep Summarization</summary>
+                    <div class="recipe-objective"><strong>Goal:</strong> Magbuod ng isang makapal na document o industry report into actionable insights.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Exceptional ang AIs pagdating sa pag-parse ng mahahabang documents agad-agad. Kapag binigay mo yung complex document direkta sa engine, pwede mo nang i-bypass yung mga acadamic na jargon at makuha agad ang exact info na kailangan mo talaga.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Mag-upload ng PDF sa kahit anong multi-modal AI platform tapos gamitin tong constraint na ito.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Nakopya!');">
+                        Analyze this attached industry report. I do not have time to read 50 pages. Summarize the thesis in 3 sentences, extract the 5 most critical statistics, and list 3 actionable takeaways for our marketing team.
+                    </div>
+                </details>
+
+                <!-- Project 3 -->
+                <details class="card recipe-card">
+                    <summary class="recipe-header">3 | The Formatter</summary>
+                    <div class="recipe-objective"><strong>Goal:</strong> I-automate ang nakakapagod na data cleanup para di mo na kailangang i-restructure manually ang mga spreadsheets.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Minsan sablay ang language models sa pagkumpleto ng actual facts, pero sobrang galing nila in transforming structural data. By strictly limiting it to formatting, nama-maximize mo in a safe way yung technical capability niya.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">I-paste ang prompt na ito kasama nung mga magulong meeting notes mo.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Nakopya!');">
+                        Act as a strict editor. Do NOT generate new ideas or rewrite my intent. Format these unorganized notes into a clean, 3-column markdown table separating: Main Topic | Action Item | Assigned To.
+                    </div>
+                </details>
+
+                <!-- Project 4 -->
+                <details class="card recipe-card">
+                    <summary class="recipe-header">4 | Vibe-Coding</summary>
+                    <div class="recipe-objective"><strong>Goal:</strong> Maka-generate ng custom web app (like a habit tracker) nang hindi nagsusulat ng code at all.</div>
+                    <div class="recipe-label">The "Why":</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem; font-style: normal; font-size: 1rem;">Hindi mo na kailangan ng comsci degree para maka-build ng personal utility apps. Dahil sa conversational generation, makakabuo ka agad ng mini-apps on the fly.</div>
+                    <div class="recipe-label">How to do it:</div>
+                    <div class="recipe-action" style="margin-bottom: 1rem;">Gumamit ng AI model na may web-preview capability (lifestyle Claude Artifacts) tsaka mo i-describe yung gusto mo.</div>
+                    <div class="recipe-prompt" onclick="navigator.clipboard.writeText(this.innerText); alert('Nakopya!');">
+                        I have no coding experience. Please generate the complete, single-file HTML and CSS for a simple, colorful habit tracker web app that lets me check off tasks. Make the buttons large and friendly.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Section 5: AI Literacy Exhaustive Resources -->
+        <section id="literacy">
+            <h2 class="highlight-yellow" style="background-color: #000; color: #fff;">AI Masterclass: Free Resources</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Kung gusto mo pang mas matuto, we compiled an exhaustive list ng mga highest-rated na libreng courses sa industry specifically designed para sa absolute beginners.</p>
+
+            <table class="brutalist-table resource-table">
+                <thead>
+                    <tr>
+                        <th>Pangalan ng Mapagkukunan / Kurso</th>
+                        <th>Provider</th>
+                        <th>Best For...</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>AI for Everyone</strong></td>
+                        <td>DeepLearning.AI / Coursera</td>
+                        <td>Ang global gold standard sa pag-intindi ng AI concepts at strategy na walang halong math.</td>
+                        <td><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google AI Essentials</strong></td>
+                        <td>Google (via Grow with Google)</td>
+                        <td>Practical at work-ready skills. Learn how to prompt effectively at paano gamitin ang AI sa araw-araw na office work.</td>
+                        <td><a href="https://grow.google/ai/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Make America AI-Ready</strong></td>
+                        <td>U.S. Department of Labor</td>
+                        <td>Zero-barrier entry. Makatanggap ng 10-minute AI lessons tine-text directly sa phone mo.</td>
+                        <td><a href="https://www.dol.gov/agencies/eta/ai-literacy" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Elements of AI</strong></td>
+                        <td>University of Helsinki</td>
+                        <td>Academic foundation-building on how AI impacts society and business ethics globally.</td>
+                        <td><a href="https://www.elementsofai.com/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>IBM AI Foundations</strong></td>
+                        <td>IBM via Coursera</td>
+                        <td>Understanding generative AI safety, bias, at responsible use sa corporate world.</td>
+                        <td><a href="https://www.coursera.org/specializations/ibm-ai-foundations-for-everyone" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Neural Networks Series</strong></td>
+                        <td>3Blue1Brown (YouTube)</td>
+                        <td>Ang the best na visual and mathematical explanation kung paano ba talaga natututo in real time and AI.</td>
+                        <td><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank">Watch Videos</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>"HUGE If True" Tech Series</strong></td>
+                        <td>Cleo Abram (YouTube)</td>
+                        <td>Optimistic, fast-paced journalism na nagbe-break down sa massive AI tech trends para sa simpleng tao.</td>
+                        <td><a href="https://www.youtube.com/@CleoAbram" target="_blank">View Channel</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Waveform Podcast: AI Explored</strong></td>
+                        <td>MKBHD (YouTube)</td>
+                        <td>Highly practical consumer-tech discussions explaining the reality of implementing AI in daily gadgets and tools.</td>
+                        <td><a href="https://www.youtube.com/results?search_query=mkbhd+waveform+ai+explained" target="_blank">Listen</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 6: Computer Basics Exhaustive Resources -->
+        <section id="computer-basics">
+            <h2 class="highlight-pink">Computer Basics: Free Resources</h2>
+            <p class="blunt-text" style="margin-bottom: 2rem;">Bago mo i-master ang AI, having a solid computer foundation makes everything simpler. Here is a massive directory of free, gentle, self-paced courses mapping everything from holding a mouse to safe web browsing.</p>
+
+            <table class="brutalist-table resource-table">
+                <thead>
+                    <tr>
+                        <th>Pangalan ng Mapagkukunan / Kurso</th>
+                        <th>Provider</th>
+                        <th>Best For...</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GCFGlobal Tutorials</strong></td>
+                        <td>GCF LearnFree</td>
+                        <td>Absolute best place to start. Covers everything from holding a mouse all the way up to emails.</td>
+                        <td><a href="https://edu.gcfglobal.org/en/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DigitalLearn.org</strong></td>
+                        <td>Public Library Association</td>
+                        <td>Straightforward, beginner-friendly computer navigation courses na gawa mismo para sa mga newbies.</td>
+                        <td><a href="https://digitallearn.org" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Northstar Digital Literacy</strong></td>
+                        <td>Literacy Minnesota</td>
+                        <td>Nagsisimula sa libreng assessment para ma-test kung ano na alam mo, kaya di mo na uulitin ang purely basics.</td>
+                        <td><a href="https://www.digitalliteracyassessment.org/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Learn My Way</strong></td>
+                        <td>Good Things Foundation</td>
+                        <td>Libreng online courses aiming to help you build basic skills for internet safety and basic online actions.</td>
+                        <td><a href="https://www.learnmyway.com/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Senior Planet Tech Guides</strong></td>
+                        <td>AARP</td>
+                        <td>Super accessible tech guides and materials tailored very specifically para sa mga older adults and seniors natin.</td>
+                        <td><a href="https://seniorplanet.org/" target="_blank">Start Learning</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Computer Basics Series</strong></td>
+                        <td>Kaceli TechTraining (YouTube)</td>
+                        <td>Maganda for visual learners. Isang comprehensive multi-hour video course encompassing Windows, Mac, and Office tools.</td>
+                        <td><a href="https://www.youtube.com/@KaceliTechTraining" target="_blank">Start Learning</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+</div>
+
+</body>
+</html>

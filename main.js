@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     link.classList.remove("active");
                     if (link.getAttribute("href") === `#${activeId}`) {
                         link.classList.add("active");
+                        if (window.innerWidth <= 1000) {
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
                     }
                 });
             }
@@ -192,4 +195,49 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Check preset
     if(inputField.value) inputField.dispatchEvent(new Event("input"));
+
+    // ----------------------------------------------------
+    // Dark Mode Toggle Logic
+    // ----------------------------------------------------
+    const themeToggleBtn = document.getElementById("dark-mode-toggle");
+    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector("i") : null;
+    
+    function updateSceneBackground() {
+        if (typeof scene !== "undefined" && scene) {
+            if (document.body.classList.contains("dark-mode")) {
+                scene.background = new THREE.Color(0x2a2a2a);
+            } else {
+                scene.background = new THREE.Color(0xfceceb);
+            }
+        }
+    }
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        if (themeIcon) {
+            themeIcon.classList.remove("fa-moon");
+            themeIcon.classList.add("fa-sun");
+        }
+        updateSceneBackground();
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+                if (themeIcon) {
+                    themeIcon.classList.remove("fa-moon");
+                    themeIcon.classList.add("fa-sun");
+                }
+            } else {
+                localStorage.setItem("theme", "light");
+                if (themeIcon) {
+                    themeIcon.classList.remove("fa-sun");
+                    themeIcon.classList.add("fa-moon");
+                }
+            }
+            updateSceneBackground();
+        });
+    }
 });
